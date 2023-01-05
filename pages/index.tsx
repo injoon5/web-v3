@@ -53,7 +53,6 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         </div>
         <div className="grid grid-cols-1 gap-2 md:gap-4 lg:grid-cols-3">
           <ul>
-            {!posts.length && 'No posts found.'}
             {posts.slice(0, MAX_DISPLAY).map((post) => {
               const { slug, date, title, summary, tags } = post
               return (
