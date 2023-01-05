@@ -2,7 +2,7 @@ import { ImageResponse } from '@vercel/og'
 import { NextRequest } from 'next/server'
 
 export const config = {
-  runtime: '',
+  runtime: 'experimental-edge',
 }
 
 export default function handler(req: NextRequest) {
