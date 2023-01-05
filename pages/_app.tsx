@@ -8,7 +8,7 @@ import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import '../public/static/pretendard/pretendard.css'
-import "@fontsource/jetbrains-mono"
+import '@fontsource/jetbrains-mono'
 
 import siteMetadata from '@/data/siteMetadata'
 import { Analytics } from 'pliny/analytics'

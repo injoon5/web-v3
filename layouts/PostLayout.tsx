@@ -138,7 +138,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Balancer><Link href={`/${prev.path}`}>{prev.title}</Link></Balancer>
+                          <Balancer>
+                            <Link href={`/${prev.path}`}>{prev.title}</Link>
+                          </Balancer>
                         </div>
                       </div>
                     )}
@@ -148,7 +150,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Balancer><Link href={`/${next.path}`}>{next.title}</Link></Balancer>
+                          <Balancer>
+                            <Link href={`/${next.path}`}>{next.title}</Link>
+                          </Balancer>
                         </div>
                       </div>
                     )}
