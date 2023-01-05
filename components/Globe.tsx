@@ -1,7 +1,7 @@
 import createGlobe from 'cobe'
 import { useEffect, useRef } from 'react'
 
-export default function Footer() {
+export default function Globe({ globeWidth, globeHeight }) {
   const canvasRef = useRef()
 
   useEffect(() => {
@@ -9,8 +9,8 @@ export default function Footer() {
 
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
-      width: 600 * 2,
-      height: 600 * 2,
+      width: globeWidth * 2,
+      height: globeHeight * 2,
       phi: 0,
       theta: 0,
       dark: 1,
@@ -37,6 +37,9 @@ export default function Footer() {
   }, [])
 
   return (
-    <canvas ref={canvasRef} style={{ width: 600, height: 600, maxWidth: '100%', aspectRatio: 1 }} />
+    <canvas
+      ref={canvasRef}
+      style={{ width: globeWidth, height: globeHeight, maxWidth: '100%', aspectRatio: 1 }}
+    />
   )
 }

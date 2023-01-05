@@ -28,8 +28,11 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           <p className="text-5xl font-extrabold leading-14 tracking-tight text-black dark:text-white sm:text-6xl md:text-7xl ">
             Injoon Oh.
           </p>
-          <div className="flex flex-col items-center justify-center">
-            <Globe></Globe>
+          <div className="hidden flex-col items-center justify-center sm:flex">
+            <Globe globeHeight={600} globeWidth={600}></Globe>
+          </div>
+          <div className="flex flex-col items-center justify-center sm:hidden">
+            <Globe globeHeight={400} globeWidth={400}></Globe>
           </div>
           <p className="text-4xl font-bold leading-10 tracking-tight text-slate-700 dark:text-slate-200 sm:text-5xl md:text-6xl md:leading-14">
             A student based in Seoul, Korea. Interested in{' '}
@@ -83,7 +86,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
                             </div>
                           </div>
                           <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                            {summary}
+                            {summary.substring(0, 140) + '...'}
                           </div>
                         </div>
                         <div className="text-base font-medium leading-6">
