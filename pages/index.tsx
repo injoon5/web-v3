@@ -23,7 +23,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <div className="">
+      <div style={{ overflowY: 'hidden' }}>
         <div className="select-none space-y-2 pt-10 pb-8 md:space-y-5">
           <p className="text-5xl font-extrabold leading-14 tracking-tight text-black dark:text-white sm:text-6xl md:text-7xl ">
             Injoon Oh.
@@ -45,21 +45,23 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           </p>
         </div>
         <div className="flex flex-wrap pt-20">
-          <h2 className="pr-5 text-2xl font-bold">Blog Posts</h2>
+          <h2 className="select-none pr-5 text-3xl font-bold sm:text-4xl sm:font-extrabold">
+            Blog Posts
+          </h2>
           <Link
             href="/blog"
-            className="rounded-2xl border border-gray-300 bg-primary-50 px-2 text-xl font-bold text-primary-500 hover:bg-primary-100 hover:text-primary-600 dark:border-gray-600 dark:bg-primary-900 dark:text-primary-300 dark:hover:bg-primary-800 dark:hover:text-primary-200"
+            className="rounded-full border border-gray-300 bg-primary-50 px-3 text-2xl font-bold text-primary-500 hover:bg-primary-100 hover:text-primary-600 dark:border-gray-600 dark:bg-primary-900 dark:text-primary-300 dark:hover:bg-primary-800 dark:hover:text-primary-200 sm:text-3xl"
             aria-label="All posts"
           >
             All Posts &rarr;
           </Link>
         </div>
 
-        <div className="flex snap-x scroll-pl-6 overflow-x-auto">
+        <div className="flex snap-x snap-proximity scroll-mr-6 overflow-x-auto">
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, tags } = post
             return (
-              <div key={slug} className="max-w-sm flex-none snap-start py-6 pr-6 ">
+              <div key={slug} className="mr-6 max-w-[344px] shrink-0 snap-start py-6 sm:max-w-sm">
                 <div className="rounded-lg border border-gray-300 bg-gradient-to-b from-slate-50 to-slate-100 p-5 py-5 dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
                   <div className="space-y-2 xl:items-baseline xl:space-y-0">
                     <dl>

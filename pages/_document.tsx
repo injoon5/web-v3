@@ -24,10 +24,10 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#000000" />
           <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
           <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171717" />
-          <meta name="viewport" content="viewport-fit=cover" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         </Head>
-        <body className="overscroll-none bg-white text-black antialiased dark:bg-gray-900 dark:text-white">
+        <body className="bg-white text-black antialiased dark:bg-gray-900 dark:text-white ">
           <Main />
           <NextScript />
         </body>

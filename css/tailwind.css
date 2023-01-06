@@ -31,3 +31,15 @@ input:-webkit-autofill:focus {
 * {
    font-family: Pretendard;
 }
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
