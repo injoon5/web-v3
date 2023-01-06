@@ -28,7 +28,7 @@ class MyDocument extends Document {
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         </Head>
         <body
-          style={{ overflowY: 'hidden' }}
+          style={{ overflowX: 'hidden' }}
           className="bg-white text-black antialiased dark:bg-gray-900 dark:text-white "
         >
           <Main />
