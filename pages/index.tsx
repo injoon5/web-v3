@@ -23,7 +23,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <div style={{ overflowY: 'hidden' }}>
+      <div>
         <div className="select-none space-y-2 pt-10 pb-8 md:space-y-5">
           <p className="text-5xl font-extrabold leading-14 tracking-tight text-black dark:text-white sm:text-6xl md:text-7xl ">
             Injoon Oh.
