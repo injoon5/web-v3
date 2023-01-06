@@ -10,7 +10,7 @@ import { NewsletterForm } from 'pliny/ui/NewsletterForm'
 import { allBlogs } from 'contentlayer/generated'
 import type { Blog } from 'contentlayer/generated'
 
-const MAX_DISPLAY = 3
+const MAX_DISPLAY = 6
 
 export const getStaticProps = async () => {
   const sortedPosts = sortedBlogPost(allBlogs) as Blog[]
@@ -32,7 +32,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             <Globe globeHeight={600} globeWidth={600}></Globe>
           </div>
           <div className="flex flex-col items-center justify-center sm:hidden">
-            <Globe globeHeight={400} globeWidth={400}></Globe>
+            <Globe globeHeight={350} globeWidth={350}></Globe>
           </div>
           <p className="text-4xl font-bold leading-10 tracking-tight text-slate-700 dark:text-slate-200 sm:text-5xl md:text-6xl md:leading-14">
             A student based in Seoul, Korea. Interested in{' '}
@@ -54,57 +54,56 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             All Posts &rarr;
           </Link>
         </div>
-        <div className="grid grid-cols-1 gap-2 md:gap-4 lg:grid-cols-3">
-          <ul>
-            {posts.slice(0, MAX_DISPLAY).map((post) => {
-              const { slug, date, title, summary, tags } = post
-              return (
-                <div key={slug} className="py-5">
-                  <div className="rounded-lg border border-gray-300 bg-gradient-to-b from-slate-50 to-slate-100 p-5 dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
-                    <div className="space-y-2 xl:items-baseline xl:space-y-0">
-                      <dl>
-                        <dt className="sr-only">Published on</dt>
-                        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                          <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                        </dd>
-                      </dl>
-                      <div className="space-y-5">
-                        <div className="space-y-6">
-                          <div>
-                            <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                              <Link
-                                href={`/blog/${slug}`}
-                                className="text-gray-900 dark:text-gray-100"
-                              >
-                                {title}
-                              </Link>
-                            </h2>
-                            <div className="flex flex-wrap">
-                              {tags.map((tag) => (
-                                <Tag key={tag} text={tag} />
-                              ))}
-                            </div>
-                          </div>
-                          <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                            {summary.substring(0, 140) + '...'}
+
+        <div className="flex snap-x scroll-pl-6 overflow-x-auto">
+          {posts.slice(0, MAX_DISPLAY).map((post) => {
+            const { slug, date, title, summary, tags } = post
+            return (
+              <div key={slug} className="max-w-sm flex-none snap-start py-6 pr-6 ">
+                <div className="rounded-lg border border-gray-300 bg-gradient-to-b from-slate-50 to-slate-100 p-5 py-5 dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
+                  <div className="space-y-2 xl:items-baseline xl:space-y-0">
+                    <dl>
+                      <dt className="sr-only">Published on</dt>
+                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                      </dd>
+                    </dl>
+                    <div className="space-y-5">
+                      <div className="space-y-6">
+                        <div>
+                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                            <Link
+                              href={`/blog/${slug}`}
+                              className="text-gray-900 dark:text-gray-100"
+                            >
+                              {title}
+                            </Link>
+                          </h2>
+                          <div className="flex flex-wrap">
+                            {tags.map((tag) => (
+                              <Tag key={tag} text={tag} />
+                            ))}
                           </div>
                         </div>
-                        <div className="text-base font-medium leading-6">
-                          <Link
-                            href={`/blog/${slug}`}
-                            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                            aria-label={`Read "${title}"`}
-                          >
-                            Read more &rarr;
-                          </Link>
+                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                          {summary.substring(0, 100) + '...'}
                         </div>
+                      </div>
+                      <div className="text-base font-medium leading-6">
+                        <Link
+                          href={`/blog/${slug}`}
+                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                          aria-label={`Read "${title}"`}
+                        >
+                          Read more &rarr;
+                        </Link>
                       </div>
                     </div>
                   </div>
                 </div>
-              )
-            })}
-          </ul>
+              </div>
+            )
+          })}
         </div>
       </div>
 
