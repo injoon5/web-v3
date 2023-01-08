@@ -44,7 +44,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             .
           </p>
         </div>
-        <div className="flex flex-wrap pt-20">
+        <div className="flex flex-wrap pt-20 tracking-tight">
           <h2 className="select-none pr-5 text-3xl font-bold sm:text-4xl sm:font-extrabold">
             Blog Posts
           </h2>
@@ -110,7 +110,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
       </div>
 
       {siteMetadata.newsletter.provider && (
-        <div className="flex items-center justify-center pt-4">
+        <div className="flex items-center justify-center pt-24">
           <NewsletterForm />
         </div>
       )}
