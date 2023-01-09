@@ -56,8 +56,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             All Posts &rarr;
           </Link>
         </div>
-
-        <div className="flex snap-x snap-proximity scroll-mr-6 overflow-x-auto">
+        <div className="relative flex snap-x snap-mandatory scroll-mr-6 overflow-x-auto">
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, tags } = post
             return (

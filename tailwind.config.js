@@ -17,6 +17,30 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      animation: {
+        'marquee-x': 'marquee-x 25s linear infinite',
+        'marquee-y': 'marquee-y 25s linear infinite',
+        '-marquee-x': 'marquee-x 25s linear infinite',
+        '-marquee-y': 'marquee-y 25s linear infinite',
+      },
+      keyframes: {
+        'marquee-x': {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        'marquee-y': {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        '-marquee-x': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        '-marquee-y': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
       spacing: {
         '9/16': '56.25%',
       },

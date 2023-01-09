@@ -4,11 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 class MyDocument extends Document {
   render() {
     return (
-      <Html
-        lang={siteMetadata.language}
-        style={{ overflowX: 'hidden', WebkitOverflowScrolling: 'touch' }}
-        className="scroll-smooth"
-      >
+      <Html lang={siteMetadata.language} className="scroll-smooth">
         <Head>
           <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
           <link
