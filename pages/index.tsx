@@ -118,12 +118,3 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
     </>
   )
 }
-
-function useOverrideRoomId(roomId: string) {
-  const { query } = useRouter()
-  const overrideRoomId = useMemo(() => {
-    return query?.roomId ? `${roomId}-${query.roomId}` : roomId
-  }, [query, roomId])
-
-  return overrideRoomId
-}
