@@ -61,47 +61,49 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             const { slug, date, title, summary, tags } = post
             return (
               <div key={slug} className="mr-6 max-w-[344px] shrink-0 snap-start py-6 sm:max-w-sm">
-                <div className="rounded-lg border border-gray-300 bg-gradient-to-b from-slate-50 to-slate-100 p-5 py-5 dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
-                  <div className="space-y-2 xl:items-baseline xl:space-y-0">
-                    <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                      </dd>
-                    </dl>
-                    <div className="space-y-5">
-                      <div className="space-y-6">
-                        <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            <Link
-                              href={`/blog/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
-                            >
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags.map((tag) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
+                <Link href={`/blog/${slug}`}>
+                  <div className="shadow-slate rounded-lg border border-gray-300 bg-gradient-to-b from-slate-50 to-slate-100 p-5 py-5 transition-shadow hover:shadow-lg dark:border-slate-700 dark:from-slate-800 dark:to-slate-900 dark:shadow-black">
+                    <div className="space-y-2 xl:items-baseline xl:space-y-0">
+                      <dl>
+                        <dt className="sr-only">Published on</dt>
+                        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                          <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                        </dd>
+                      </dl>
+                      <div className="space-y-5">
+                        <div className="space-y-6">
+                          <div>
+                            <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                              <Link
+                                href={`/blog/${slug}`}
+                                className="text-gray-900 dark:text-gray-100"
+                              >
+                                {title}
+                              </Link>
+                            </h2>
+                            <div className="flex flex-wrap">
+                              {tags.map((tag) => (
+                                <Tag key={tag} text={tag} />
+                              ))}
+                            </div>
+                          </div>
+                          <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                            {summary.substring(0, 100) + '...'}
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary.substring(0, 100) + '...'}
+                        <div className="text-base font-medium leading-6">
+                          <Link
+                            href={`/blog/${slug}`}
+                            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                            aria-label={`Read "${title}"`}
+                          >
+                            Read more &rarr;
+                          </Link>
                         </div>
-                      </div>
-                      <div className="text-base font-medium leading-6">
-                        <Link
-                          href={`/blog/${slug}`}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          aria-label={`Read "${title}"`}
-                        >
-                          Read more &rarr;
-                        </Link>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             )
           })}
@@ -115,4 +117,13 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
       )}
     </>
   )
+}
+
+function useOverrideRoomId(roomId: string) {
+  const { query } = useRouter()
+  const overrideRoomId = useMemo(() => {
+    return query?.roomId ? `${roomId}-${query.roomId}` : roomId
+  }, [query, roomId])
+
+  return overrideRoomId
 }
