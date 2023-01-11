@@ -45,7 +45,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           </p>
         </div>
         <div className="flex flex-wrap pt-20 tracking-tight">
-          <h2 className="select-none pr-5 text-3xl font-bold sm:text-4xl sm:font-extrabold">
+          <h2 className="select-none pr-5 text-3xl font-bold sm:text-4xl">
             Blog Posts
           </h2>
           <Link
